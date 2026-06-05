@@ -38,6 +38,8 @@ app.post('/servicios', servicioController.registrar);
 app.put('/servicios/:nombre', servicioController.actualizar);
 app.delete('/servicios/:nombre', servicioController.eliminar);
 
-app.listen(8000, () => {
-    console.log('funciona en el puerto 8000');
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, () => {
+    console.log(`funciona en el puerto ${PORT}`);
 });
