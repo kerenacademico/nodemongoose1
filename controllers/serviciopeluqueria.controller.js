@@ -1,12 +1,13 @@
-const servicio = require('../models/servicio.model');
+const serviciopeluqueria = require('../models/serviciopeluqueria.model');
+
 
 exports.consultar = async (req, res)=>{
 
     try {
 
-        const servicios = await servicio.find();
+        const serviciospeluqueria = await serviciopeluqueria.find();
 
-        res.json(servicios);
+        res.json(serviciospeluqueria);
 
     } catch (error) {
 
@@ -18,9 +19,9 @@ exports.consultarnombre = async (req, res)=>{
 
     try {
         
-        const servicios = await servicio.find({nombre: req.params.nombre });
-        console.log(servicios);
-        res.json(servicios);
+        const serviciospeluqueria = await serviciopeluqueria.find({nombre: req.params.nombre });
+        console.log(serviciospeluqueria);
+        res.json(serviciospeluqueria);
 
     } catch (error) {
 
@@ -31,15 +32,15 @@ exports.consultarnombre = async (req, res)=>{
 exports.registrar = async (req, res)=>{
 
     try {
-        let nuevoServicio={
+        let nuevoServiciopeluqueria={
             nombre:req.body.nombre,
             precio:req.body.precio,
             duracionMinutos:req.body.duracionMinutos
         }
         
-        const servicios = await servicio.create(nuevoServicio);
-        console.log(servicios);
-        res.json(servicios);
+        const serviciospeluqueria = await serviciopeluqueria.create(nuevoServiciopeluqueria);
+        console.log(serviciospeluqueria);
+        res.json(serviciospeluqueria);
 
     } catch (error) {
 
@@ -49,7 +50,7 @@ exports.registrar = async (req, res)=>{
 
 exports.actualizar = async (req, res) => {
   try {
-    const servicioActualizado = await servicio.findOneAndUpdate(
+    const serviciopeluqueriaActualizado = await serviciopeluqueria.findOneAndUpdate(
       { nombre: req.params.nombre },
       {
         nombre: req.body.nombre,
@@ -59,7 +60,7 @@ exports.actualizar = async (req, res) => {
       { new: true } // Devuelve el servicio actualizado
     );
 
-    res.json(servicioActualizado);
+    res.json(serviciopeluqueriaActualizado);
 
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -68,11 +69,11 @@ exports.actualizar = async (req, res) => {
 
 exports.eliminar = async (req, res) => {
   try {
-    const servicioEliminado = await servicio.findOneAndDelete({ nombre: req.params.nombre });
+    const serviciopeluqueriaEliminado = await serviciopeluqueria.findOneAndDelete({ nombre: req.params.nombre });
 
     res.json({
-      mensaje: "Servicio eliminado correctamente",
-      servicio: servicioEliminado
+      mensaje: "Servicio peluqueria eliminado correctamente",
+      servicio: "serviciopeluqueriaEliminado"
     });
 
   } catch (error) {
